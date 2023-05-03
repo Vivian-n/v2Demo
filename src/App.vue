@@ -1,13 +1,28 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <!-- 使用动态的 transition name -->
+    <transition :name="transitionName">
+    <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data:()=>({
+    token:false,
+    transitionName:""
+  }),
+  // 接着在父组件内
+  // watch $route 决定使用哪种过渡
+  watch: {
+    // '$route' (to, from) {
+    //   const toDepth = to.path.split('/').length
+    //   const fromDepth = from.path.split('/').length
+    //   this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    // }
+  }
 }
 </script>
 
